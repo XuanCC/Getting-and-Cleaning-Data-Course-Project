@@ -52,5 +52,11 @@ colnames(names_features_true) <- NULL
 #change the column names in final data to match features
 colnames(final_data)[2:(ncol(final_data)-2)]<-(names_features_true)
 
-#output data
+#output final data
 write.table(final_data, row.name=FALSE, file = "final_data.txt")
+
+#calculate average of mean/std columns
+tidy_data<-colMeans(final_data[2:ncol(final_data)-2],na.rm = FALSE, dims = 1)
+
+#output tidy data
+write.table(tidy_data, row.name=FALSE, file = "tidy_data.txt")
